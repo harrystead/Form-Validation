@@ -14,16 +14,21 @@ function validateForm() {
       "error: username must be between 6 and 12 letters long and must also include a number"
     );
   }
+  else{
+      console.log(true);
+  }
 
   if (containsDigit.test(nameInput)) {
     console.log(true);
+  }
+  else {
     invalid.push(
         "error: password must contain a number (1-10)"
         );
+        console.log(invalid);
   }
 
   $("#error-div").append(invalid);
-  invalid.css("color", "red");
 }
 
 $("#submit-btn").on("click", function (e) {
