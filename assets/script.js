@@ -38,20 +38,12 @@ $( document ).ready(function (){
       
       function validatePhoneForm() {
         var phoneInput = $("#phone-input").val();
-        var containsDigit = /\d/;
         var invalidTwo = [];
 
-        if(phoneInput.length != 11) {
-            console.log("phone-number: ", false);
-            invalidTwo.push("error: phone number must be 11 digits");
-        }
-
-        if (containsDigit.test(phoneInput)) {
-            console.log(true);
-          } else {
-            invalidTwo.push("error: enter valid phone number");
-            console.log(invalidTwo);
-    }
+        if (! /^[0-9]{11}$/.test(phoneInput)) {
+            invalidTwo.push("error: please input exactly 11 numbers");
+            return false;
+          }
 
     $("#error-list").append(invalidTwo)
 }
