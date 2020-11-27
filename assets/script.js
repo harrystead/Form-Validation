@@ -19,13 +19,13 @@ $( document ).ready(function (){
         if (containsDigit.test(nameInput)) {
           console.log(true);
         } else {
-          invalid.push("error: password must contain a number (1-10)");
+          invalid.push("error: username must contain a number (1-10)");
           console.log(invalid);
         }
 
         if(nameInput.indexOf(' ') > 0) {
             console.log(true);
-            invalid.push("error: password must not contain spaces");
+            invalid.push("error: username must not contain spaces");
             console.log(invalid);
         }
         else{
@@ -39,13 +39,22 @@ $( document ).ready(function (){
       function validatePhoneForm() {
         var phoneInput = $("#phone-input").val();
         var containsDigit = /\d/;
-        var invalid = [];
+        var invalidTwo = [];
 
         if(phoneInput.length != 11) {
             console.log("phone-number: ", false);
-            invalid.push("error: phone number must be 11 digits");
+            invalidTwo.push("error: phone number must be 11 digits");
         }
+
+        if (containsDigit.test(phoneInput)) {
+            console.log(true);
+          } else {
+            invalidTwo.push("error: enter valid phone number");
+            console.log(invalidTwo);
     }
+
+    $("#error-list").append(invalidTwo)
+}
       
       $("#submit-btn").on("click", function (e) {
         e.preventDefault();
