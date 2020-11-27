@@ -45,9 +45,9 @@ $(document).ready(function () {
     if (!/^[0-9]{11}$/.test(phoneInput)) {
       invalidTwo.push("error: please input exactly 11 numbers");
       console.log(invalidTwo);
-    }
-    else{
-        console.log(true, "50")
+    } else {
+      console.log(true, "9");
+      localStorage.setItem("phone-number: ", phoneInput);
     }
 
     $("#error-list").append(invalidTwo);
@@ -58,28 +58,34 @@ $(document).ready(function () {
     var invalidThree = [];
     var re = /\S+@\S+\.\S+/;
 
-    if(re.test(emailInput)) {
-        console.log("email-input", true);
-    }
-    else {
-        invalidThree.push("error: please enter a valid email address");
-        console.log(invalidThree);
+    if (re.test(emailInput)) {
+      console.log("email-input", true);
+      localStorage.setItem("email: ", emailInput);
+    } else {
+      invalidThree.push("error: please enter a valid email address");
+      console.log(invalidThree);
     }
   }
 
-  function validateAgeForm () {
-      var ageInput = $("#age-input").val();
-      var invalidFour = [];
+  function validateAgeForm() {
+    var ageInput = $("#age-input").val();
+    var invalidFour = [];
 
-      if (!/^[0-9]{2}$/.test(ageInput)) {
-        invalidFour.push("error: please enter a valid age");
-        console.log(invalidFour);
-      }
-      else{
-          console.log(true, "age")
-      }
+    if (!/^[0-9]{8}$/.test(ageInput)) {
+      invalidFour.push("error: please enter a valid date of birth");
+      console.log(invalidFour);
+    } else {
+      console.log(true, "age");
+      localStorage.setItem("DOB: ", ageInput);
+    }
+  }
 
+  function validateGenderForm() {
+    var genderInput = $("#gender-select").val();
 
+    if(genderInput) {
+        localStorage.setItem("gender: ", genderInput);
+    }
   }
 
   $("#submit-btn").on("click", function (e) {
@@ -89,5 +95,6 @@ $(document).ready(function () {
     validatePhoneForm();
     validateEmailForm();
     validateAgeForm();
+    validateGenderForm();
   });
 });
