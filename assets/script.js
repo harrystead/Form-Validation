@@ -25,7 +25,7 @@ $( document ).ready(function (){
 
         if(nameInput.indexOf(' ') > 0) {
             console.log(true);
-            invalid.push("error: password must not contain spaces")
+            invalid.push("error: password must not contain spaces");
             console.log(invalid);
         }
         else{
@@ -37,8 +37,15 @@ $( document ).ready(function (){
       }
       
       function validatePhoneForm() {
-      
-      }
+        var phoneInput = $("#phone-input").val();
+        var containsDigit = /\d/;
+        var invalid = [];
+
+        if(phoneInput.length != 11) {
+            console.log("phone-number: ", false);
+            invalid.push("error: phone number must be 11 digits");
+        }
+    }
       
       $("#submit-btn").on("click", function (e) {
         e.preventDefault();
