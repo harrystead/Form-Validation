@@ -44,7 +44,10 @@ $(document).ready(function () {
 
     if (!/^[0-9]{11}$/.test(phoneInput)) {
       invalidTwo.push("error: please input exactly 11 numbers");
-      return false;
+      console.log(invalidTwo);
+    }
+    else{
+        console.log(true, "50")
     }
 
     $("#error-list").append(invalidTwo);
@@ -62,6 +65,19 @@ $(document).ready(function () {
         invalidThree.push("error: please enter a valid email address");
         console.log(invalidThree);
     }
+  }
+
+  function validateAgeForm () {
+      var ageInput = $("#age-input").val();
+      var invalidFour = [];
+
+      if (!/^[0-9]{2}$/.test(ageInput)) {
+        invalidFour.push("error: please enter a valid age");
+        console.log(invalidFour);
+      }
+      else{
+          console.log(true, "age")
+      }
 
 
   }
@@ -72,5 +88,6 @@ $(document).ready(function () {
     validateNameForm();
     validatePhoneForm();
     validateEmailForm();
+    validateAgeForm();
   });
 });
