@@ -1,8 +1,7 @@
-//dob
+
 //local storage for name
 //alert at the end of success
 //style
-
 
 $(document).ready(function () {
   function validateNameForm() {
@@ -18,11 +17,13 @@ $(document).ready(function () {
       nameInput.indexOf(" ") > 0
     ) {
       console.log(false);
-      invalid.push("error: username must be between 6 and 12 letters long and contain a number and no spaces");
+      invalid.push(
+        "error: username must be between 6 and 12 letters long and contain a number and no spaces"
+      );
       console.log(invalid);
-    } 
-    else {
+    } else {
       console.log("success");
+      localStorage.setItem("name: ", nameInput);
     }
 
     $("#error-list").append(invalid);
@@ -55,30 +56,36 @@ $(document).ready(function () {
       invalidThree.push("error: please enter a valid email address");
       console.log(invalidThree);
     }
+    $("#error-list").append(invalidThree);
   }
 
   function validateAgeForm() {
     var ageInput = $("#age-input").val();
     var invalidFour = [];
 
-    if(ageInput < 18) {
-    invalidFour.push("error: you must be over 18 years old to gain full access")
-    console.log(invalidFour);
-    }
-    else {
+    if (ageInput < 18 || ageInput === NaN) {
+      invalidFour.push(
+        "error: you must be over 18 years old to gain full access"
+      );
+      console.log(invalidFour);
+    } else {
       console.log("success");
       localStorage.setItem("age: ", ageInput);
     }
-
-
-}
-
+    $("#error-list").append(invalidFour);
+  }
   function validateGenderForm() {
     var genderInput = $("#gender-select").val();
+    var invalidFive = [];
 
-    if(genderInput) {
-        localStorage.setItem("gender: ", genderInput);
+    if (genderInput) {
+      localStorage.setItem("gender: ", genderInput);
     }
+    else {
+      console.log("error 5");
+      invalidFive.push("error: please select a gender")
+    }
+    $("#error-list").append(invalidFive);
   }
 
   $("#submit-btn").on("click", function (e) {
