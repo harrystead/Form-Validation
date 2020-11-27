@@ -1,5 +1,8 @@
-//entire orm submitted on one click
-//function to run five problems
+//dob
+//local storage for name
+//alert at the end of success
+//style
+
 
 $(document).ready(function () {
   function validateNameForm() {
@@ -10,29 +13,16 @@ $(document).ready(function () {
     if (
       nameInput.length === 0 ||
       nameInput.length < 6 ||
-      nameInput.length > 12
+      nameInput.length > 12 ||
+      !containsDigit.test(nameInput) || //exclamtion mark reverses the method.
+      nameInput.indexOf(" ") > 0
     ) {
       console.log(false);
-
-      invalid.push("error: username must be between 6 and 12 letters long");
+      invalid.push("error: username must be between 6 and 12 letters long and contain a number and no spaces");
       console.log(invalid);
-    } else {
-      console.log(true);
-    }
-
-    if (containsDigit.test(nameInput)) {
-      console.log(true);
-    } else {
-      invalid.push("error: username must contain a number (1-10)");
-      console.log(invalid);
-    }
-
-    if (nameInput.indexOf(" ") > 0) {
-      console.log(true);
-      invalid.push("error: username must not contain spaces");
-      console.log(invalid);
-    } else {
-      console.log(false);
+    } 
+    else {
+      console.log("success");
     }
 
     $("#error-list").append(invalid);
@@ -71,14 +61,17 @@ $(document).ready(function () {
     var ageInput = $("#age-input").val();
     var invalidFour = [];
 
-    if (!/^[0-9]{8}$/.test(ageInput)) {
-      invalidFour.push("error: please enter a valid date of birth");
-      console.log(invalidFour);
-    } else {
-      console.log(true, "age");
-      localStorage.setItem("DOB: ", ageInput);
+    if(ageInput < 18) {
+    invalidFour.push("error: you must be over 18 years old to gain full access")
+    console.log(invalidFour);
     }
-  }
+    else {
+      console.log("success");
+      localStorage.setItem("age: ", ageInput);
+    }
+
+
+}
 
   function validateGenderForm() {
     var genderInput = $("#gender-select").val();
