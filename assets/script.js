@@ -1,9 +1,6 @@
-
-//local storage for name
-//alert at the end of success
-//style
-
 $(document).ready(function () {
+  var errorArray = [];
+
   function validateNameForm() {
     var nameInput = $("#name-input").val().toLowerCase();
     var containsDigit = /\d/;
@@ -15,20 +12,24 @@ $(document).ready(function () {
       !containsDigit.test(nameInput) || //exclamtion mark reverses the method.
       nameInput.indexOf(" ") > 0
     ) {
-        var nameList = $("<li>").text("ERROR: username must be between 6 and 12 letters long and contain a number and no spaces");
-        $("#error-list").append(nameList);
-        nameList.attr("id", "list-items");
+      var nameList = $("<li>").text(
+        "ERROR: username must be between 6 and 12 letters long and contain a number and no spaces"
+      );
+      $("#error-list").append(nameList);
+      nameList.attr("id", "list-items");
 
-        $("#name-input").css({'border' : '2px red solid'});
+      errorArray.push("error");
+      console.log(errorArray);
 
-        console.log(false);
+      $("#name-input").css({ border: "2px red solid" });
+
+      console.log(false);
     } else {
       console.log("success");
       localStorage.setItem("name: ", nameInput);
 
-      $("#name-input").css({'border' : '2px green solid'});
+      $("#name-input").css({ border: "2px green solid" });
     }
-
   }
 
   function validatePhoneForm() {
@@ -38,16 +39,16 @@ $(document).ready(function () {
       var phoneList = $("<li>").text("ERROR: please input exactly 11 numbers");
       phoneList.attr("id", "list-items");
       $("#error-list").append(phoneList);
-      $("#phone-input").css({'border' : '2px red solid'});
-      console.log(false)
+      $("#phone-input").css({ border: "2px red solid" });
+      errorArray.push("error");
+      console.log(errorArray);
+      console.log(false);
     } else {
-      console.log(true, "9");
+      console.log(true);
       localStorage.setItem("phone-number: ", phoneInput);
 
-      $("#phone-input").css({'border' : '2px green solid'});
-
+      $("#phone-input").css({ border: "2px green solid" });
     }
-
   }
 
   function validateEmailForm() {
@@ -56,14 +57,18 @@ $(document).ready(function () {
 
     if (re.test(emailInput)) {
       console.log("email-input", true);
-      $("#email-input").css({'border' : '2px green solid'});
+      $("#email-input").css({ border: "2px green solid" });
+      errorArray.push("error");
+      console.log(errorArray);
       localStorage.setItem("email: ", emailInput);
     } else {
-      var emailList = $("<li>").text("ERROR: please enter a valid email address");
-        $("#error-list").append(emailList);
-        emailList.attr("id", "list-items");
-        $("#email-input").css({'border' : '2px red solid'});
-        console.log(false);
+      var emailList = $("<li>").text(
+        "ERROR: please enter a valid email address"
+      );
+      $("#error-list").append(emailList);
+      emailList.attr("id", "list-items");
+      $("#email-input").css({ border: "2px red solid" });
+      console.log(false);
     }
   }
 
@@ -71,15 +76,19 @@ $(document).ready(function () {
     var ageInput = $("#age-input").val();
 
     if (ageInput < 18 || ageInput === NaN) {
-      var ageList = $("<li>").text("ERROR: you must be over 18 years old to gain full access");
+      var ageList = $("<li>").text(
+        "ERROR: you must be over 18 years old to gain full access"
+      );
       $("#error-list").append(ageList);
       ageList.attr("id", "list-items");
-      $("#age-input").css({'border' : '2px red solid'});
+      $("#age-input").css({ border: "2px red solid" });
+      errorArray.push("error");
+      console.log(errorArray);
       console.log(false);
     } else {
       console.log("success");
       localStorage.setItem("age: ", ageInput);
-      $("#age-input").css({'border' : '2px green solid'});
+      $("#age-input").css({ border: "2px green solid" });
     }
   }
   function validateGenderForm() {
@@ -87,14 +96,15 @@ $(document).ready(function () {
 
     if (genderInput) {
       localStorage.setItem("gender: ", genderInput);
-      $("#gender-select").css({'border' : '2px green solid'});
-    }
-    else {
+      $("#gender-select").css({ border: "2px green solid" });
+    } else {
       var genderList = $("<li>").text("ERROR: please select a gender");
       $("#error-list").append(genderList);
       genderList.attr("id", "list-items");
-      $("#gender-select").css({'border' : '2px red solid'});
-      console.log(false)
+      $("#gender-select").css({ border: "2px red solid" });
+      errorArray.push("error");
+      console.log(errorArray);
+      console.log(false);
     }
   }
 
@@ -107,10 +117,16 @@ $(document).ready(function () {
     validateEmailForm();
     validateAgeForm();
     validateGenderForm();
+
+    if (errorArray.includes("error")) {
+      localStorage.clear();
+    }
   });
 
   window.onbeforeunload = function (e) {
     e.preventDefault();
     localStorage.clear();
-};
+  };
 });
+
+//
