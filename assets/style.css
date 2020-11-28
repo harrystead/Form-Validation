@@ -1,8 +1,12 @@
+body {
+    font-size: 16px;
+}
 h2 {
     text-align: center;
     margin-bottom: 30px;
     margin-top: 30px;
 }
+
 
 label{
     display: inline-block;
@@ -12,8 +16,26 @@ label{
     text-align: right;
 }
 
+#error-list {
+    margin-top: 20px;
+}
+
 #list-items {
     color: rgb(233, 7, 7);
     text-align: center;
     list-style: none;
+    margin-top: 5px;
+}
+
+input {
+    height: 35px;
+    width: 150px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+#gender-select,
+#submit-btn {
+    margin-left: 10px;
+    width: 140px;
 }

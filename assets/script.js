@@ -15,7 +15,7 @@ $(document).ready(function () {
       !containsDigit.test(nameInput) || //exclamtion mark reverses the method.
       nameInput.indexOf(" ") > 0
     ) {
-        var nameList = $("<li>").text("error: username must be between 6 and 12 letters long and contain a number and no spaces");
+        var nameList = $("<li>").text("ERROR: username must be between 6 and 12 letters long and contain a number and no spaces");
         $("#error-list").append(nameList);
         nameList.attr("id", "list-items");
         console.log(false);
@@ -30,7 +30,7 @@ $(document).ready(function () {
     var phoneInput = $("#phone-input").val();
 
     if (!/^[0-9]{11}$/.test(phoneInput)) {
-      var phoneList = $("<li>").text("error: please input exactly 11 numbers");
+      var phoneList = $("<li>").text("ERROR: please input exactly 11 numbers");
       phoneList.attr("id", "list-items");
       $("#error-list").append(phoneList);
       console.log(false)
@@ -49,7 +49,7 @@ $(document).ready(function () {
       console.log("email-input", true);
       localStorage.setItem("email: ", emailInput);
     } else {
-      var emailList = $("<li>").text("error: please enter a valid email address");
+      var emailList = $("<li>").text("ERROR: please enter a valid email address");
         $("#error-list").append(emailList);
         emailList.attr("id", "list-items");
         console.log(false);
@@ -60,7 +60,7 @@ $(document).ready(function () {
     var ageInput = $("#age-input").val();
 
     if (ageInput < 18 || ageInput === NaN) {
-      var ageList = $("<li>").text("error: you must be over 18 years old to gain full access");
+      var ageList = $("<li>").text("ERROR: you must be over 18 years old to gain full access");
       $("#error-list").append(ageList);
       ageList.attr("id", "list-items");
       console.log(false);
@@ -76,7 +76,7 @@ $(document).ready(function () {
       localStorage.setItem("gender: ", genderInput);
     }
     else {
-      var genderList = $("<li>").text("error: please select a gender");
+      var genderList = $("<li>").text("ERROR: please select a gender");
       $("#error-list").append(genderList);
       genderList.attr("id", "list-items");
       console.log(false)
