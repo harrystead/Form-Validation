@@ -18,10 +18,15 @@ $(document).ready(function () {
         var nameList = $("<li>").text("ERROR: username must be between 6 and 12 letters long and contain a number and no spaces");
         $("#error-list").append(nameList);
         nameList.attr("id", "list-items");
+
+        $("#name-input").css({'border' : '2px red solid'});
+
         console.log(false);
     } else {
       console.log("success");
       localStorage.setItem("name: ", nameInput);
+
+      $("#name-input").css({'border' : '2px green solid'});
     }
 
   }
@@ -33,10 +38,14 @@ $(document).ready(function () {
       var phoneList = $("<li>").text("ERROR: please input exactly 11 numbers");
       phoneList.attr("id", "list-items");
       $("#error-list").append(phoneList);
+      $("#phone-input").css({'border' : '2px red solid'});
       console.log(false)
     } else {
       console.log(true, "9");
       localStorage.setItem("phone-number: ", phoneInput);
+
+      $("#phone-input").css({'border' : '2px green solid'});
+
     }
 
   }
@@ -47,11 +56,13 @@ $(document).ready(function () {
 
     if (re.test(emailInput)) {
       console.log("email-input", true);
+      $("#email-input").css({'border' : '2px green solid'});
       localStorage.setItem("email: ", emailInput);
     } else {
       var emailList = $("<li>").text("ERROR: please enter a valid email address");
         $("#error-list").append(emailList);
         emailList.attr("id", "list-items");
+        $("#email-input").css({'border' : '2px red solid'});
         console.log(false);
     }
   }
@@ -63,10 +74,12 @@ $(document).ready(function () {
       var ageList = $("<li>").text("ERROR: you must be over 18 years old to gain full access");
       $("#error-list").append(ageList);
       ageList.attr("id", "list-items");
+      $("#age-input").css({'border' : '2px red solid'});
       console.log(false);
     } else {
       console.log("success");
       localStorage.setItem("age: ", ageInput);
+      $("#age-input").css({'border' : '2px green solid'});
     }
   }
   function validateGenderForm() {
@@ -74,11 +87,13 @@ $(document).ready(function () {
 
     if (genderInput) {
       localStorage.setItem("gender: ", genderInput);
+      $("#gender-select").css({'border' : '2px green solid'});
     }
     else {
       var genderList = $("<li>").text("ERROR: please select a gender");
       $("#error-list").append(genderList);
       genderList.attr("id", "list-items");
+      $("#gender-select").css({'border' : '2px red solid'});
       console.log(false)
     }
   }

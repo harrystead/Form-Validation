@@ -34,8 +34,32 @@ input {
     margin-left: 5px;
 }
 
-#gender-select,
-#submit-btn {
-    margin-left: 10px;
-    width: 140px;
+#gender-select {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    height: 35px;
+    width: 150px;
 }
+
+#submit-btn {
+
+    justify-content: center;
+    text-align: right;
+    margin-left: 54rem;
+}
+
+#submit-btn {
+    cursor: pointer;
+    background-color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+}
+
+#submit-btn:hover {
+    opacity: 0.8;
+}
+
+
+
