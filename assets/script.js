@@ -100,6 +100,7 @@ $(document).ready(function () {
 
   $("#submit-btn").on("click", function (e) {
     e.preventDefault();
+    $("#error-list").empty();
 
     validateNameForm();
     validatePhoneForm();
