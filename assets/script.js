@@ -107,4 +107,9 @@ $(document).ready(function () {
     validateAgeForm();
     validateGenderForm();
   });
+
+  window.onbeforeunload = function (e) {
+    e.preventDefault();
+    localStorage.clear();
+};
 });

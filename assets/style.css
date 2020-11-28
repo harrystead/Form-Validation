@@ -39,6 +39,7 @@ input {
     margin-bottom: 10px;
     height: 35px;
     width: 150px;
+    border: rgb(85, 83, 83) 2px solid;
 }
 
 #submit-btn {
