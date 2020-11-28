@@ -18,9 +18,11 @@ $(document).ready(function () {
       $("#error-list").append(nameList);
       nameList.attr("id", "list-items");
 
+      //if there is an error, push error message to array.
       errorArray.push("error");
       console.log(errorArray);
 
+      //border red
       $("#name-input").css({ border: "2px red solid" });
 
       console.log(false);
@@ -112,17 +114,20 @@ $(document).ready(function () {
     e.preventDefault();
     $("#error-list").empty();
 
+    //call functions
     validateNameForm();
     validatePhoneForm();
     validateEmailForm();
     validateAgeForm();
     validateGenderForm();
 
+    //if error array includes error wipe local storage
     if (errorArray.includes("error")) {
       localStorage.clear();
     }
   });
 
+  //clear local storage upon refresh - ushing local storage as submission point
   window.onbeforeunload = function (e) {
     e.preventDefault();
     localStorage.clear();
